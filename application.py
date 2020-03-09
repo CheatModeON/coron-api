@@ -14,7 +14,8 @@ import json
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/api/v1/docs')
+@app.route('/api/v1/docs/')
 def about():
     return render_template('index.html')
     
