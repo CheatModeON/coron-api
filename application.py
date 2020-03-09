@@ -134,7 +134,12 @@ def countries_stats():
         data = {}
         for col in allcols:
             if(c==0):
-                data['country'] = (col.find(text=True).strip(' '))
+                if(col.find('a', class_ = 'mt_a') != None):
+                    data['country'] = col.find('a', class_ = 'mt_a').text.strip(' ')
+                elif(col.find('span') != None):
+                    data['country'] = col.find('span').text.strip(' ')
+                else:
+                    data['country'] = col.find(text=True).strip(' ')
             if(c==1):
                 if((col.find(text=True))!=None):
                     data['total_cases'] = (col.find(text=True).strip(' '))
