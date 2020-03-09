@@ -15,7 +15,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def about():
-    return 'Information about coronavirus! Go to /api/v1'
+    return app.send_static_file('index.html')
     
 @app.route('/api/v1', methods=["GET"])
 @app.route('/api/v1/', methods=["GET"])
