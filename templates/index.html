@@ -183,7 +183,7 @@
     <div class="app-desc">More information: <a href="http://github.com/cheatModeON/coron-api">http://github.com/cheatModeON/coron-api</a></div>
     <div class="app-desc">Contact Info: <a href="achipap@gmail.com">achipap@gmail.com</a></div>
     <div class="app-desc">Version: 1.0.0</div>
-    <div class="app-desc">BasePath:/CheatModeON/coron-api/1.0.0</div>
+    <div class="app-desc">BasePath:https://coron-api.azurewebsites.net/api/v1/</div>
     <div class="license-info">MIT</div>
     <div class="license-url">https://opensource.org/licenses/MIT</div>
   <h2>Access</h2>
@@ -217,7 +217,7 @@
     <div class="field-items">
       <div class="param">country (required)</div>
       
-            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; name of the country to get stats </div>    </div>  <!-- field-items -->
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; name of the country to get stats (Optional) </div>    </div>  <!-- field-items -->
 
 
     <h3 class="field-label">Return type</h3>
@@ -234,19 +234,19 @@
   "serious_cases" : "1",
   "country" : "Greece",
   "total_cases_per_mil" : "7.1",
-  "total_deaths" : "total_deaths",
+  "total_deaths" : "423",
   "new_cases" : "+1",
-  "new_deaths" : "new_deaths",
-  "total_recovered" : "total_recovered",
+  "new_deaths" : "+5",
+  "total_recovered" : "42",
   "active_cases" : "74"
 }, {
-  "serious_cases" : "1",
-  "country" : "Greece",
-  "total_cases_per_mil" : "7.1",
+  "serious_cases" : "41",
+  "country" : "Germany",
+  "total_cases_per_mil" : "21.1",
   "total_deaths" : "total_deaths",
-  "new_cases" : "+1",
-  "new_deaths" : "new_deaths",
-  "total_recovered" : "total_recovered",
+  "new_cases" : "+4",
+  "new_deaths" : "+2",
+  "total_recovered" : "302",
   "active_cases" : "74"
 } ]</code></pre>
 
@@ -336,7 +336,7 @@
     <pre class="example"><code>[ {
   "name" : "Greece"
 }, {
-  "name" : "Greece"
+  "name" : "Germany"
 } ]</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -376,11 +376,11 @@
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>[ {
-  "method" : "GET /api/v1/coronavirus",
-  "name" : "About coronavirus"
+  "method" : "GET /api/v1/stats",
+  "name" : "Statistical data"
 }, {
-  "method" : "GET /api/v1/coronavirus",
-  "name" : "About coronavirus"
+  "method" : "GET /api/v1/general",
+  "name" : "General data"
 } ]</code></pre>
 
     <h3 class="field-label">Produces</h3>
