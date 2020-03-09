@@ -104,11 +104,11 @@ def infected_countries():
             if(c==0):
                 if(col.find(text=True)!="Total:"):
                     if(col.find('a', class_ = 'mt_a') != None):
-                        data['country'] = col.find('a', class_ = 'mt_a').text.strip(' ')
+                        output.append(col.find('a', class_ = 'mt_a').text.strip(' '))
                     elif(col.find('span') != None):
-                        data['country'] = col.find('span').text.strip(' ')
+                        output.append(col.find('span').text.strip(' '))
                     else:
-                        data['country'] = col.find(text=True).strip(' ')
+                        output.append(col.find(text=True).strip(' '))
             c+=1
         r+=1
     return jsonify(output)
