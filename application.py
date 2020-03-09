@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 from flask import Flask
 from flask import jsonify
 from flask import request
+from flask import Flask, render_template
 
 from datetime import datetime
 import json
@@ -15,7 +16,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def about():
-    return app.send_static_file('index.html')
+    return render_template('index.html')
     
 @app.route('/api/v1', methods=["GET"])
 @app.route('/api/v1/', methods=["GET"])
