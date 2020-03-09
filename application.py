@@ -166,9 +166,9 @@ def countries_stats():
                     data['serious_cases'] = "No Data";
             if(c==8):
                 if((col.find(text=True))!=None):
-                    data['total_cases'] = (col.find(text=True))
+                    data['total_cases_per_mil'] = (col.find(text=True))
                 else:
-                    data['total_cases'] = "No Data";
+                    data['total_cases_per_mil'] = "No Data";
             
             c+=1
         if(data['country'] != "Total:"):
