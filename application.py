@@ -17,7 +17,7 @@ app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
 @app.route('/')
 def corona():
-    return "This is a REST API designed to provide data on the coronavirus outbreak. For the documantion of the API please visit https://coron-api.azurewebsites.net/api/v1/docs/"
+    return render_template('index.html')
 
 @app.route('/api/v1/docs')
 @app.route('/api/v1/docs/')
