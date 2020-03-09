@@ -4,7 +4,6 @@
 import requests
 from html.parser import HTMLParser
 from bs4 import BeautifulSoup
-import pandas as pd
 from flask import Flask
 from flask import jsonify
 from flask import request
