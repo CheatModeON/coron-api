@@ -15,8 +15,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def about():
-    """Print 'Hello, world!' as the response body."""
-    return 'Information about coronavirus!'
+    return 'Information about coronavirus! Go to /api/v1'
     
 @app.route('/api/v1', methods=["GET"])
 @app.route('/api/v1/', methods=["GET"])
@@ -26,10 +25,7 @@ def info_view():
         'info': 'GET /api/v1',
         'statistics': 'GET /api/v1/general',
         'countries infected': 'GET /api/v1/countries',
-        'country stats': 'GET /api/v1/stats?name=',
-        'TODO: latest news': 'GET /api/v1/news',
-        'TODO: about coronavirus': 'GET /api/v1/coronavirus',
-        'TODO: protection measurements': 'GET /api/v1/protection'
+        'country stats': 'GET /api/v1/stats?country='
     }
     return jsonify(output)
     
@@ -47,17 +43,17 @@ def general_view():
     soup = BeautifulSoup(html_data, 'html.parser')
 
     counters = soup.find_all('div', class_ = 'maincounter-number')
-    cases = counters[0].get_text()
-    deaths = counters[1].get_text()
-    recovered = counters[2].get_text()
+    cases = counters[0].get_text().strip(' ')
+    deaths = counters[1].get_text().strip(' ')
+    recovered = counters[2].get_text().strip(' ')
 
     counters2 = soup.find_all('div', class_ = 'number-table-main')
-    active_cases = counters2[0].get_text()
-    closed_cases = counters2[1].get_text()
+    active_cases = counters2[0].get_text().strip(' ')
+    closed_cases = counters2[1].get_text().strip(' ')
 
     counters3 = soup.find_all('span', class_ = 'number-table')
-    mild_condition = counters3[0].get_text()
-    serious_condition = counters3[1].get_text()
+    mild_condition = counters3[0].get_text().strip(' ')
+    serious_condition = counters3[1].get_text().strip(' ')
     #recovered = counters3[2].get_text()
     #deaths = counters3[3].get_text()
     
@@ -100,7 +96,7 @@ def infected_countries():
         for col in allcols:
             if(c==0):
                 if(col.find(text=True)!="Total:"):
-                    output.append(col.find(text=True))
+                    output.append(col.find(text=True).strip(' '))
             c+=1
         r+=1
     return jsonify(output)
@@ -178,7 +174,7 @@ def countries_stats():
             output.append(data)
         r+=1
 
-    parameter = request.args.get('name')
+    parameter = request.args.get('country')
     if(parameter != None):
         for dat in (output):
             if(dat['country'] == parameter ):
