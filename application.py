@@ -16,7 +16,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def corona():
-    return "This is a REST API designed to provide data on coronavirus outbreak. For the documantion of the API please visit https://coron-api.azurewebsites.net/api/v1/docs/"
+    return "This is a REST API designed to provide data on the coronavirus outbreak. For the documantion of the API please visit https://coron-api.azurewebsites.net/api/v1/docs/"
 
 @app.route('/api/v1/docs')
 @app.route('/api/v1/docs/')
