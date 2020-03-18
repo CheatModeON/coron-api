@@ -90,7 +90,7 @@ def infected_countries():
         print (resp.text)
             
     soup = BeautifulSoup(html_data, 'html.parser')
-    table = soup.find('table', id = 'main_table_countries')
+    table = soup.find('table', id = 'main_table_countries_today')
 
     allrows = table.tbody.findAll('tr')
 
@@ -127,7 +127,7 @@ def countries_stats():
         print (resp.text)
             
     soup = BeautifulSoup(html_data, 'html.parser')
-    table = soup.find('table', id = 'main_table_countries')
+    table = soup.find('table', id = 'main_table_countries_today')
 
     allrows = table.tbody.findAll('tr')
 
