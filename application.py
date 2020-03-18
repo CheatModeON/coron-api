@@ -154,7 +154,7 @@ def countries_stats():
                     data['total_cases'] = "No Data";
             if(c==2):
                 if((col.find(text=True))!=None):
-                    data['new_cases'] = (col.find(text=True).strip(' +'))
+                    data['new_cases'] = (col.find(text=True).strip('+'))
                 else:
                     data['new_cases'] = "No Data";
             if(c==3):
@@ -164,7 +164,7 @@ def countries_stats():
                     data['total_deaths'] = "No Data";
             if(c==4):
                 if((col.find(text=True))!=None):
-                    data['new_deaths'] = (col.find(text=True).strip(' +'))
+                    data['new_deaths'] = (col.find(text=True).strip('+'))
                 else:
                     data['new_deaths'] = "No Data";
             if(c==5):
