@@ -160,7 +160,7 @@ def countries_stats():
             if(c==3):
                 if((col.find(text=True))!=None):
                     data['total_deaths'] = (col.find(text=True).strip(' ')).replace(',', '')
-                elif((col.find(text=True))==" "):
+                elif((col.find(text=True).strip(' '))==""):
                     data['total_deaths'] = "0";
                 else:
                     data['total_deaths'] = "No Data";
