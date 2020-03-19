@@ -149,7 +149,7 @@ def countries_stats():
                     data['country'] = col.find(text=True).strip(' ')
             if(c==1):
                 if((col.find(text=True))!=None):
-                    data['total_cases'] = (col.find(text=True).strip(' '))
+                    data['total_cases'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
                     data['total_cases'] = "No Data";
             if(c==2):
