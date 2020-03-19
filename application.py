@@ -159,7 +159,7 @@ def countries_stats():
                     data['new_cases'] = "No Data";
             if(c==3):
                 if((col.find(text=True))!=None):
-                    data['total_deaths'] = (col.find(text=True).strip(' '))
+                    data['total_deaths'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
                     data['total_deaths'] = "No Data";
             if(c==4):
@@ -169,17 +169,17 @@ def countries_stats():
                     data['new_deaths'] = "No Data";
             if(c==5):
                 if((col.find(text=True))!=None):
-                    data['total_recovered'] = (col.find(text=True).strip(' '))
+                    data['total_recovered'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
                     data['total_recovered'] = "No Data";
             if(c==6):
                 if((col.find(text=True))!=None):
-                    data['active_cases'] = (col.find(text=True).strip(' '))
+                    data['active_cases'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
                     data['active_cases'] = "No Data";
             if(c==7):
                 if((col.find(text=True))!=None):
-                    data['serious_cases'] = (col.find(text=True).strip(' '))
+                    data['serious_cases'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
                     data['serious_cases'] = "No Data";
             if(c==8):
