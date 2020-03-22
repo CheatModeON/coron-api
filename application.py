@@ -151,44 +151,44 @@ def countries_stats():
                 if((col.find(text=True))!=None):
                     data['total_cases'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
-                    data['total_cases'] = "No Data";
+                    data['total_cases'] = "0";
             if(c==2):
                 if((col.find(text=True))!=None):
                     data['new_cases'] = (col.find(text=True).strip(' '))
                 else:
-                    data['new_cases'] = "No Data";
+                    data['new_cases'] = "0";
             if(c==3):
                 if((col.find(text=True))!=None):
                     data['total_deaths'] = (col.find(text=True).strip(' ')).replace(',', '')
                 elif((col.find(text=True).strip(' '))==""):
                     data['total_deaths'] = "0";
                 else:
-                    data['total_deaths'] = "No Data";
+                    data['total_deaths'] = "0";
             if(c==4):
                 if((col.find(text=True))!=None):
                     data['new_deaths'] = (col.find(text=True).strip(' '))
                 else:
-                    data['new_deaths'] = "No Data";
+                    data['new_deaths'] = "0";
             if(c==5):
                 if((col.find(text=True))!=None):
                     data['total_recovered'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
-                    data['total_recovered'] = "No Data";
+                    data['total_recovered'] = "0";
             if(c==6):
                 if((col.find(text=True))!=None):
                     data['active_cases'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
-                    data['active_cases'] = "No Data";
+                    data['active_cases'] = "0";
             if(c==7):
                 if((col.find(text=True))!=None):
                     data['serious_cases'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
-                    data['serious_cases'] = "No Data";
+                    data['serious_cases'] = "0";
             if(c==8):
                 if((col.find(text=True))!=None):
                     data['total_cases_per_mil'] = (col.find(text=True))
                 else:
-                    data['total_cases_per_mil'] = "No Data";
+                    data['total_cases_per_mil'] = "0";
             
             c+=1
         if(data['country'] != "Total:"):
