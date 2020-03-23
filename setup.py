@@ -3,9 +3,8 @@ from setuptools import setup, find_packages
 requires = [
     'requests',
     'flask',
-    'BeautifulSoup',
-    'HTMLParser',
-    'pandas'
+    'bs4',
+    'HTMLParser'
 ]
 
 setup(
