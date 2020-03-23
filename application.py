@@ -186,7 +186,7 @@ def countries_stats():
                     data['serious_cases'] = "0";
             if(c==8):
                 if((col.find(text=True))!=None):
-                    data['total_cases_per_mil'] = (col.find(text=True)).strip(' ')).replace(',', '')
+                    data['total_cases_per_mil'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
                     data['total_cases_per_mil'] = "0";
             
