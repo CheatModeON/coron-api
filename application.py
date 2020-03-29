@@ -52,17 +52,17 @@ def general_view():
     soup = BeautifulSoup(html_data, 'html.parser')
 
     counters = soup.find_all('div', class_ = 'maincounter-number')
-    cases = counters[0].get_text().strip(' ')
-    deaths = counters[1].get_text().strip(' ')
-    recovered = counters[2].get_text().strip(' ')
+    cases = counters[0].get_text().strip(' ').strip('\n').replace(',', '')
+    deaths = counters[1].get_text().strip(' ').strip('\n').replace(',', '')
+    recovered = counters[2].get_text().strip(' ').strip('\n').replace(',', '')
 
     counters2 = soup.find_all('div', class_ = 'number-table-main')
-    active_cases = counters2[0].get_text().strip(' ')
-    closed_cases = counters2[1].get_text().strip(' ')
+    active_cases = counters2[0].get_text().strip(' ').strip('\n').replace(',', '')
+    closed_cases = counters2[1].get_text().strip(' ').strip('\n').replace(',', '')
 
     counters3 = soup.find_all('span', class_ = 'number-table')
-    mild_condition = counters3[0].get_text().strip(' ')
-    serious_condition = counters3[1].get_text().strip(' ')
+    mild_condition = counters3[0].get_text().strip(' ').strip('\n').replace(',', '')
+    serious_condition = counters3[1].get_text().strip(' ').strip('\n').replace(',', '')
     #recovered = counters3[2].get_text()
     #deaths = counters3[3].get_text()
     
