@@ -478,6 +478,40 @@ def population():
     else:
         return jsonify(output)
 
+@app.route('/api/v2/news', methods=["GET"])
+def news():
+    #time_of_request = datetime.now()
+    html_data = ''
+    resp = requests.get('https://gr.euronews.com/hot-topic/coronavirus')
+    if resp.ok:
+        html_data = resp.text
+    else:
+        print ("Error! {}".format(resp.status_code))
+        print (resp.text)
+
+
+    soup = BeautifulSoup(html_data, 'html.parser')
+    soup = soup.find('div', class_ = 'o-block-listing__articles')
+    titles = soup.find_all('a', class_ = 'm-object__title__link')
+
+    descriptions = soup.find_all('a', class_ = 'm-object__description__link')
+
+    publishedat = soup.find_all('div', class_ = 'm-object__publishedAt')
+
+    output =[]
+
+    for t in range(len(titles)):
+        data={}
+        #print(t.text)
+        data['title'] = titles[t].text.replace('\n', '').replace('    ', '').replace('  ','').replace('                  ', '')
+
+        data['description'] = descriptions[t].text.replace('\n', '').replace('    ', '').replace('  ','').replace('                  ', '')
+
+        data['publishedat'] = publishedat[t].text.replace('\n', '').replace('    ', '').replace('  ','').replace('                  ', '')
+        output.append(data)
+
+    return jsonify(output)
+
 # main
 
 if __name__ == '__main__':
