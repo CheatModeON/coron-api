@@ -189,6 +189,21 @@ def countries_stats():
                     data['total_cases_per_mil'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
                     data['total_cases_per_mil'] = "0";
+            if(c==9):
+                if((col.find(text=True))!=None):
+                    data['deaths_per_mil'] = (col.find(text=True).strip(' ')).replace(',', '')
+                else:
+                    data['deaths_per_mil'] = "0";
+            if(c==10):
+                if((col.find(text=True))!=None):
+                    data['total_tests'] = (col.find(text=True).strip(' ')).replace(',', '')
+                else:
+                    data['total_tests'] = "0";
+            if(c==11):
+                if((col.find(text=True))!=None):
+                    data['test_per_mil'] = (col.find(text=True).strip(' ')).replace(',', '')
+                else:
+                    data['test_per_mil'] = "0";
 
             c+=1
         if(data['country'] != "Total:"):
@@ -279,6 +294,21 @@ def stats_yesterday():
                     data['total_cases_per_mil'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
                     data['total_cases_per_mil'] = "0";
+            if(c==9):
+                if((col.find(text=True))!=None):
+                    data['deaths_per_mil'] = (col.find(text=True).strip(' ')).replace(',', '')
+                else:
+                    data['deaths_per_mil'] = "0";
+            if(c==10):
+                if((col.find(text=True))!=None):
+                    data['total_tests'] = (col.find(text=True).strip(' ')).replace(',', '')
+                else:
+                    data['total_tests'] = "0";
+            if(c==11):
+                if((col.find(text=True))!=None):
+                    data['test_per_mil'] = (col.find(text=True).strip(' ')).replace(',', '')
+                else:
+                    data['test_per_mil'] = "0";
 
             c+=1
         if(data['country'] != "Total:"):
