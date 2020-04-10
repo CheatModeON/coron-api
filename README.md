@@ -12,10 +12,12 @@ The Restful server runs on Azure
 
 'countries infected': 'GET /api/v1/countries'
 
-'country stats': 'GET /api/v1/stats?name='
+'country stats': 'GET /api/v1/stats?country='
 
-'TODO: latest news': 'GET /api/v1/news'
+'info v2': 'GET /api/v2'
 
-'TODO: about coronavirus': 'GET /api/v1/coronavirus'
+'yesterday stats': 'GET /api/v2/yesterday?country='
 
-'TODO: protection measurements': 'GET /api/v1/protection'
+'continents stats': 'GET /api/v2/continents?continent='
+
+'population': 'GET /api/v2/population?country='
