@@ -502,15 +502,12 @@ def news():
 
     for t in range(len(titles)):
         data={}
-        #print(t.text)
-        data['title'] = titles[t].text.replace('\n', '').replace('    ', '').replace('  ','').replace('                  ', '').encode('utf-8')
-
-        data['description'] = descriptions[t].text.replace('\n', '').replace('    ', '').replace('  ','').replace('                  ', '').encode('utf-8')
-
-        data['publishedat'] = publishedat[t].text.replace('\n', '').replace('    ', '').replace('  ','').replace('                  ', '').encode('utf-8')
+        data['title'] = titles[t].text.replace('\n', '').replace('    ', '').replace('  ','').replace('                  ', '')
+        data['description'] = descriptions[t].text.replace('\n', '').replace('    ', '').replace('  ','').replace('                  ', '')
+        data['publishedat'] = publishedat[t].text.replace('\n', '').replace('    ', '').replace('  ','').replace('                  ', '')
         output.append(data)
 
-    return jsonify(output)
+    return (json.dumps(output, sort_keys=True, indent=3, ensure_ascii=False).encode('utf8'))
 
 # main
 
