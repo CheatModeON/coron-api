@@ -324,7 +324,6 @@ def stats_yesterday():
     else:
         return jsonify(output)
 
-
 @app.route('/api/v2/continents', methods=["GET"])
 def continents():
     html_data = ''
@@ -362,7 +361,6 @@ def continents():
     else:
         return jsonify(output)
 
-
 @app.route('/api/v2/population', methods=["GET"])
 def population():
 
@@ -392,9 +390,9 @@ def population():
                 if(col.find('a', class_ = 'mt_a') != None):
                     data['rank'] = col.find('a', class_ = 'mt_a').text.strip(' ')
                 elif(col.find('span') != None):
-                    data['rank'] = col.find('span').text.strip(' ')
+                    data['country'] = col.find('span').text.strip(' ')
                 else:
-                    data['rank'] = col.find(text=True).strip(' ')
+                    data['country'] = col.find(text=True).strip(' ')
             if(c==1):
                 if(col.find('a', class_ = 'mt_a') != None):
                     data['country'] = col.find('a', class_ = 'mt_a').text.strip(' ')
@@ -468,7 +466,6 @@ def population():
         return "Country not found"
     else:
         return jsonify(output)
-
 
 # main
 
