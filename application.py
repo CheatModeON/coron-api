@@ -206,6 +206,99 @@ def countries_stats():
 
 # Version 2
 
+@app.route('/api/v2/yesterday', methods=["GET"])
+def stats_yesterday():
+
+    time_of_request = datetime.now()
+    html_data = ''
+    resp = requests.get('https://www.worldometers.info/coronavirus/')
+    if resp.ok:
+        html_data = resp.text
+    else:
+        print ("Error! {}".format(resp.status_code))
+        print (resp.text)
+
+    soup = BeautifulSoup(html_data, 'html.parser')
+    table = soup.find('table', id = 'main_table_countries_yesterday')
+
+    allrows = table.tbody.findAll('tr')
+
+    output = []
+    r=0
+    for row in allrows:
+        allcols = row.findAll('td')
+        c=0
+        data = {}
+        for col in allcols:
+            if(c==0):
+                if(col.find('a', class_ = 'mt_a') != None):
+                    data['country'] = col.find('a', class_ = 'mt_a').text.strip(' ')
+                elif(col.find('span') != None):
+                    data['country'] = col.find('span').text.strip(' ')
+                else:
+                    data['country'] = col.find(text=True).strip(' ')
+            if(c==1):
+                if((col.find(text=True))!=None):
+                    data['total_cases'] = (col.find(text=True).strip(' ')).replace(',', '')
+                else:
+                    data['total_cases'] = "0";
+            if(c==2):
+                if((col.find(text=True))!=None):
+                    data['new_cases'] = (col.find(text=True).strip(' '))
+                else:
+                    data['new_cases'] = "0";
+            if(c==3):
+                if((col.find(text=True))!=None):
+                    data['total_deaths'] = (col.find(text=True).strip(' ')).replace(',', '')
+                elif((col.find(text=True).strip(' '))==""):
+                    data['total_deaths'] = "0";
+                else:
+                    data['total_deaths'] = "0";
+            if(c==4):
+                if((col.find(text=True))!=None):
+                    data['new_deaths'] = (col.find(text=True).strip(' '))
+                else:
+                    data['new_deaths'] = "0";
+            if(c==5):
+                if((col.find(text=True))!=None):
+                    data['total_recovered'] = (col.find(text=True).strip(' ')).replace(',', '')
+                else:
+                    data['total_recovered'] = "0";
+            if(c==6):
+                if((col.find(text=True))!=None):
+                    data['active_cases'] = (col.find(text=True).strip(' ')).replace(',', '')
+                else:
+                    data['active_cases'] = "0";
+            if(c==7):
+                if((col.find(text=True))!=None):
+                    data['serious_cases'] = (col.find(text=True).strip(' ')).replace(',', '')
+                else:
+                    data['serious_cases'] = "0";
+            if(c==8):
+                if((col.find(text=True))!=None):
+                    data['total_cases_per_mil'] = (col.find(text=True).strip(' ')).replace(',', '')
+                else:
+                    data['total_cases_per_mil'] = "0";
+
+            c+=1
+        if(data['country'] != "Total:"):
+            output.append(data)
+        r+=1
+
+    parameter = request.args.get('country')
+    if(parameter != None):
+        for dat in (output):
+            if(dat['country'] == parameter ):
+                return jsonify(dat)
+        return "Country not found"
+    else:
+        return jsonify(output)
+
+
+@app.route('/api/v2/continents', methods=["GET"])
+def continents():
+    return "TEST"
+
 
 # main
 
