@@ -310,17 +310,17 @@ def continents():
     cont = soup.find_all('tr', class_ = 'total_row_world row_continent')
 
     output =[]
-    data={}
 
     for x in range(6):
-        data['continent'] = cont[x].find_all('td')[0].text
-        data['total_cases'] = cont[x].find_all('td')[1].text
-        data['new_cases'] = cont[x].find_all('td')[2].text
-        data['total_deaths'] = cont[x].find_all('td')[3].text
-        data['new_deaths'] = cont[x].find_all('td')[4].text
-        data['total_recovered'] = cont[x].find_all('td')[5].text
-        data['active_cases'] = cont[x].find_all('td')[6].text
-        data['serious_cases'] = cont[x].find_all('td')[7].text
+        data={}
+        data['continent'] = cont[x].find_all('td')[0].text.strip('\n')
+        data['total_cases'] = cont[x].find_all('td')[1].text.replace(',', '')
+        data['new_cases'] = cont[x].find_all('td')[2].text.replace(',', '')
+        data['total_deaths'] = cont[x].find_all('td')[3].text.replace(',', '')
+        data['new_deaths'] = cont[x].find_all('td')[4].text.replace(',', '')
+        data['total_recovered'] = cont[x].find_all('td')[5].text.replace(',', '')
+        data['active_cases'] = cont[x].find_all('td')[6].text.replace(',', '')
+        data['serious_cases'] = cont[x].find_all('td')[7].text.replace(',', '')
         output.append(data)
 
     parameter = request.args.get('continent')
