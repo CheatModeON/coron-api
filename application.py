@@ -363,6 +363,105 @@ def continents():
         return jsonify(output)
 
 
+@app.route('/api/v2/population', methods=["GET"])
+def population():
+
+
+    time_of_request = datetime.now()
+    html_data = ''
+    resp = requests.get('https://www.worldometers.info/world-population/population-by-country/')
+    if resp.ok:
+        html_data = resp.text
+    else:
+        print ("Error! {}".format(resp.status_code))
+        print (resp.text)
+
+    soup = BeautifulSoup(html_data, 'html.parser')
+    table = soup.find('table', id = 'example2')
+
+    allrows = table.tbody.findAll('tr')
+
+    output = []
+    r=0
+    for row in allrows:
+        allcols = row.findAll('td')
+        c=0
+        data = {}
+        for col in allcols:
+            if(c==0):
+                if(col.find('a', class_ = 'mt_a') != None):
+                    data['country'] = col.find('a', class_ = 'mt_a').text.strip(' ')
+                elif(col.find('span') != None):
+                    data['country'] = col.find('span').text.strip(' ')
+                else:
+                    data['country'] = col.find(text=True).strip(' ')
+            if(c==1):
+                if((col.find(text=True))!=None):
+                    data['population'] = (col.find(text=True).strip(' ')).replace(',', '')
+                else:
+                    data['population'] = "0";
+            if(c==2):
+                if((col.find(text=True))!=None):
+                    data['yearly_change'] = (col.find(text=True).strip(' '))
+                else:
+                    data['yearly_change'] = "0";
+            if(c==3):
+                if((col.find(text=True))!=None):
+                    data['net_change'] = (col.find(text=True).strip(' ')).replace(',', '')
+                elif((col.find(text=True).strip(' '))==""):
+                    data['net_change'] = "0";
+                else:
+                    data['net_change'] = "0";
+            if(c==4):
+                if((col.find(text=True))!=None):
+                    data['density'] = (col.find(text=True).strip(' '))
+                else:
+                    data['density'] = "0";
+            if(c==5):
+                if((col.find(text=True))!=None):
+                    data['land_area'] = (col.find(text=True).strip(' ')).replace(',', '')
+                else:
+                    data['land_area'] = "0";
+            if(c==6):
+                if((col.find(text=True))!=None):
+                    data['migrants'] = (col.find(text=True).strip(' ')).replace(',', '')
+                else:
+                    data['migrants'] = "0";
+            if(c==7):
+                if((col.find(text=True))!=None):
+                    data['fert_rate'] = (col.find(text=True).strip(' ')).replace(',', '')
+                else:
+                    data['fert_rate'] = "0";
+            if(c==8):
+                if((col.find(text=True))!=None):
+                    data['med_age'] = (col.find(text=True).strip(' ')).replace(',', '')
+                else:
+                    data['med_age'] = "0";
+            if(c==9):
+                if((col.find(text=True))!=None):
+                    data['urban_pop'] = (col.find(text=True).strip(' ')).replace(',', '')
+                else:
+                    data['urban_pop'] = "0";
+            if(c==10):
+                if((col.find(text=True))!=None):
+                    data['world_share'] = (col.find(text=True).strip(' ')).replace(',', '')
+                else:
+                    data['world_share'] = "0";
+
+            c+=1
+        if(data['country'] != "Total:"):
+            output.append(data)
+        r+=1
+
+    parameter = request.args.get('country')
+    if(parameter != None):
+        for dat in (output):
+            if(dat['country'] == parameter ):
+                return jsonify(dat)
+        return "Country not found"
+    else:
+        return jsonify(output)
+
 
 # main
 
