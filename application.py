@@ -297,7 +297,41 @@ def stats_yesterday():
 
 @app.route('/api/v2/continents', methods=["GET"])
 def continents():
-    return "TEST"
+    html_data = ''
+    resp = requests.get('https://www.worldometers.info/coronavirus/')
+    if resp.ok:
+        html_data = resp.text
+    else:
+        print ("Error! {}".format(resp.status_code))
+        print (resp.text)
+
+
+    soup = BeautifulSoup(html_data, 'html.parser')
+    cont = soup.find_all('tr', class_ = 'total_row_world row_continent')
+
+    output =[]
+    data={}
+
+    for x in range(6):
+        data['continent'] = cont[x].find_all('td')[0].text
+        data['total_cases'] = cont[x].find_all('td')[1].text
+        data['new_cases'] = cont[x].find_all('td')[2].text
+        data['total_deaths'] = cont[x].find_all('td')[3].text
+        data['new_deaths'] = cont[x].find_all('td')[4].text
+        data['total_recovered'] = cont[x].find_all('td')[5].text
+        data['active_cases'] = cont[x].find_all('td')[6].text
+        data['serious_cases'] = cont[x].find_all('td')[7].text
+        output.append(data)
+
+    parameter = request.args.get('continent')
+    if(parameter != None):
+        for dat in (output):
+            if(dat['continent'] == parameter ):
+                return jsonify(dat)
+        return "Continent not found"
+    else:
+        return jsonify(output)
+
 
 
 # main
