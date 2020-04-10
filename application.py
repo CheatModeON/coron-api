@@ -207,7 +207,7 @@ def countries_stats():
 # Version 2
 
 @app.route('/api/v2/yesterday', methdods=["GET"])
-def yesterday():
+def stats_yesterday():
 
     time_of_request = datetime.now()
     html_data = ''
@@ -296,9 +296,8 @@ def yesterday():
 
 
 @app.route('/api/v2/continents', methdods=["GET"])
-def yesterday():
+def continents():
     return "TEST"
-
 
 
 # main
