@@ -15,6 +15,8 @@ import json
 
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+app.config['JSON_AS_ASCII'] = False
+
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 @app.route('/')
@@ -507,7 +509,8 @@ def news():
         data['publishedat'] = publishedat[t].text.replace('\n', '').replace('    ', '').replace('  ','').replace('                  ', '')
         output.append(data)
 
-    return (json.dumps(output, sort_keys=True, indent=3, ensure_ascii=False).encode('utf8'))
+    return jsonify(output)
+    #return (json.dumps(output, sort_keys=True, indent=3, ensure_ascii=False).encode('utf8'))
 
 # main
 
