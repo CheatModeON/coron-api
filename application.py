@@ -220,6 +220,17 @@ def countries_stats():
         return jsonify(output)
 
 # Version 2
+@app.route('/api/v2', methods=["GET"])
+@app.route('/api/v2/', methods=["GET"])
+def info_view_v2():
+     """List of routes for this API."""
+     output = {
+         'info': 'GET /api/v2',
+         'stats of yesterday': 'GET /api/v2/yesterday',
+         'continents stat': 'GET /api/v2/continents?continent=',
+         'population': 'GET /api/v1/stats?country='
+     }
+     return jsonify(output)
 
 @app.route('/api/v2/yesterday', methods=["GET"])
 def stats_yesterday():
