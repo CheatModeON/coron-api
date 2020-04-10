@@ -504,9 +504,9 @@ def news():
 
     for t in range(len(titles)):
         data={}
-        data['title'] = titles[t].text.replace('\n', '').replace('    ', '').replace('  ','').replace('                  ', '')#.encode('utf-8')
-        data['description'] = descriptions[t].text.replace('\n', '').replace('    ', '').replace('  ','').replace('                  ', '')#.encode('utf-8')
-        data['publishedat'] = publishedat[t].text.replace('\n', '').replace('    ', '').replace('  ','').replace('                  ', '')#.encode('utf-8')
+        data['title'] = titles[t].text.replace('\n', '').replace('    ', '').replace('  ','').replace('                  ', '').encode('utf-8')
+        data['description'] = descriptions[t].text.replace('\n', '').replace('    ', '').replace('  ','').replace('                  ', '').encode('utf-8')
+        data['publishedat'] = publishedat[t].text.replace('\n', '').replace('    ', '').replace('  ','').replace('                  ', '').encode('utf-8')
         output.append(data)
 
 
