@@ -15,7 +15,7 @@ import json
 
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
-#app.config['JSON_AS_ASCII'] = False
+app.config['JSON_AS_ASCII'] = False
 
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
@@ -504,9 +504,9 @@ def news():
 
     for t in range(len(titles)):
         data={}
-        data['title'] = titles[t].text.replace('\n', '').replace('    ', '').replace('  ','').replace('                  ', '')
-        data['description'] = descriptions[t].text.replace('\n', '').replace('    ', '').replace('  ','').replace('                  ', '')
-        data['publishedat'] = publishedat[t].text.replace('\n', '').replace('    ', '').replace('  ','').replace('                  ', '')
+        data['title'] = titles[t].text.replace('\n', '').replace('    ', '').replace('  ','').replace('                  ', '').encode('utf-8')
+        data['description'] = descriptions[t].text.replace('\n', '').replace('    ', '').replace('  ','').replace('                  ', '').encode('utf-8')
+        data['publishedat'] = publishedat[t].text.replace('\n', '').replace('    ', '').replace('  ','').replace('                  ', '').encode('utf-8')
         output.append(data)
 
 
