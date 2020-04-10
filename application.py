@@ -511,7 +511,7 @@ def news():
 
 
     #return jsonify(output)
-    json_response=(json.dumps(output, sort_keys=True, indent=3, ensure_ascii=False).encode('utf8'))
+    json_response=(json.dumps(output, sort_keys=True, indent=3, ensure_ascii=False))
     #return (json.dumps(output, sort_keys=True, indent=3, ensure_ascii=False).encode('utf8'))
     response = Response(json_response,content_type="application/json; charset=utf-8" )
     return response
