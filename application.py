@@ -500,7 +500,7 @@ def news():
 
     publishedat = soup.find_all('div', class_ = 'm-object__publishedAt')
 
-    hrefs = soup.find_all('a', href=True).attrs['href']
+    hrefs = soup.find_all('a', href=True)
 
     output =[]
 
@@ -509,7 +509,7 @@ def news():
         data['title'] = titles[t].text.replace('\n', '').replace('    ', '').replace('  ','').replace('                  ', '')
         data['description'] = descriptions[t].text.replace('\n', '').replace('    ', '').replace('  ','').replace('                  ', '')
         data['publishedat'] = publishedat[t].text.replace('\n', '').replace('    ', '').replace('  ','').replace('                  ', '')
-        data['href'] = "https://gr.euronews.com"+hrefs[t].text.replace('\n', '').replace('    ', '').replace('  ','').replace('                  ', '')
+        data['href'] = "https://gr.euronews.com"+hrefs[t].attrs['href'].replace('\n', '').replace('    ', '').replace('  ','').replace('                  ', '')
         output.append(data)
 
     #return jsonify(output)
