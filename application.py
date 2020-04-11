@@ -510,7 +510,7 @@ def news():
         output.append(data)
 
     #return jsonify(output)
-    json_response=json.dumps(output, sort_keys=True, indent=3, ensure_ascii=False)#.encode('utf8'))
+    json_response=json.dumps(output, ensure_ascii=False)#.encode('utf8'))
     return json_response
 
 
