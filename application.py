@@ -377,7 +377,6 @@ def continents():
 @app.route('/api/v2/population', methods=["GET"])
 def population():
 
-
     time_of_request = datetime.now()
     html_data = ''
     resp = requests.get('https://www.worldometers.info/world-population/population-by-country/')
