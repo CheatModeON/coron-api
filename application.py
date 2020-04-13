@@ -203,9 +203,9 @@ def countries_stats():
                     data['total_tests'] = "0";
             if(c==11):
                 if((col.find(text=True))!=None):
-                    data['test_per_mil'] = (col.find(text=True).strip(' ')).replace(',', '')
+                    data['tests_per_mil'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
-                    data['test_per_mil'] = "0";
+                    data['tests_per_mil'] = "0";
 
             c+=1
         if(data['country'] != "Total:"):
