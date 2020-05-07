@@ -3,7 +3,7 @@ Scrapping data from [Worldometers](https://www.worldometers.info/coronavirus/)
 
 Install the libraries specified on setup.py.
 
-The Restful server runs on Azure
+The Restful server runs on Azure and Heroku
 
 # API
 'info': 'GET /api/v1'
