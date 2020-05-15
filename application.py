@@ -106,7 +106,7 @@ def infected_countries():
         c=0
         data = {}
         for col in allcols:
-            if(c==0):
+            if(c==1):
                 if(col.find(text=True)!="Total:"):
                     if(col.find('a', class_ = 'mt_a') != None):
                         output.append(col.find('a', class_ = 'mt_a').text.strip(' '))
@@ -142,66 +142,66 @@ def countries_stats():
         c=0
         data = {}
         for col in allcols:
-            if(c==0):
+            if(c==1):
                 if(col.find('a', class_ = 'mt_a') != None):
                     data['country'] = col.find('a', class_ = 'mt_a').text.strip(' ')
                 elif(col.find('span') != None):
                     data['country'] = col.find('span').text.strip(' ')
                 else:
                     data['country'] = col.find(text=True)
-            if(c==1):
+            if(c==2):
                 if((col.find(text=True))!=None):
                     data['total_cases'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
                     data['total_cases'] = "0";
-            if(c==2):
+            if(c==3):
                 if((col.find(text=True))!=None):
                     data['new_cases'] = (col.find(text=True).strip(' '))
                 else:
                     data['new_cases'] = "0";
-            if(c==3):
+            if(c==4):
                 if((col.find(text=True))!=None):
                     data['total_deaths'] = (col.find(text=True).strip(' ')).replace(',', '')
                 elif((col.find(text=True))==""):
                     data['total_deaths'] = "0";
                 else:
                     data['total_deaths'] = "0";
-            if(c==4):
+            if(c==5):
                 if((col.find(text=True))!=None):
                     data['new_deaths'] = (col.find(text=True).strip(' '))
                 else:
                     data['new_deaths'] = "0";
-            if(c==5):
+            if(c==6):
                 if((col.find(text=True))!=None):
                     data['total_recovered'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
                     data['total_recovered'] = "0";
-            if(c==6):
+            if(c==7):
                 if((col.find(text=True))!=None):
                     data['active_cases'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
                     data['active_cases'] = "0";
-            if(c==7):
+            if(c==8):
                 if((col.find(text=True))!=None):
                     data['serious_cases'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
                     data['serious_cases'] = "0";
-            if(c==8):
+            if(c==9):
                 if((col.find(text=True))!=None):
                     data['total_cases_per_mil'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
                     data['total_cases_per_mil'] = "0";
-            if(c==9):
+            if(c==10):
                 if((col.find(text=True))!=None):
                     data['deaths_per_mil'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
                     data['deaths_per_mil'] = "0";
-            if(c==10):
+            if(c==11):
                 if((col.find(text=True))!=None):
                     data['total_tests'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
                     data['total_tests'] = "0";
-            if(c==11):
+            if(c==12):
                 if((col.find(text=True))!=None):
                     data['tests_per_mil'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
@@ -258,66 +258,66 @@ def stats_yesterday():
         c=0
         data = {}
         for col in allcols:
-            if(c==0):
+            if(c==1):
                 if(col.find('a', class_ = 'mt_a') != None):
                     data['country'] = col.find('a', class_ = 'mt_a').text.strip(' ')
                 elif(col.find('span') != None):
                     data['country'] = col.find('span').text.strip(' ')
                 else:
                     data['country'] = col.find(text=True)
-            if(c==1):
+            if(c==2):
                 if((col.find(text=True))!=None):
                     data['total_cases'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
                     data['total_cases'] = "0";
-            if(c==2):
+            if(c==3):
                 if((col.find(text=True))!=None):
                     data['new_cases'] = (col.find(text=True).strip(' '))
                 else:
                     data['new_cases'] = "0";
-            if(c==3):
+            if(c==4):
                 if((col.find(text=True))!=None):
                     data['total_deaths'] = (col.find(text=True).strip(' ')).replace(',', '')
                 elif((col.find(text=True))==""):
                     data['total_deaths'] = "0";
                 else:
                     data['total_deaths'] = "0";
-            if(c==4):
+            if(c==5):
                 if((col.find(text=True))!=None):
                     data['new_deaths'] = (col.find(text=True).strip(' '))
                 else:
                     data['new_deaths'] = "0";
-            if(c==5):
+            if(c==6):
                 if((col.find(text=True))!=None):
                     data['total_recovered'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
                     data['total_recovered'] = "0";
-            if(c==6):
+            if(c==7):
                 if((col.find(text=True))!=None):
                     data['active_cases'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
                     data['active_cases'] = "0";
-            if(c==7):
+            if(c==8):
                 if((col.find(text=True))!=None):
                     data['serious_cases'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
                     data['serious_cases'] = "0";
-            if(c==8):
+            if(c==9):
                 if((col.find(text=True))!=None):
                     data['total_cases_per_mil'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
                     data['total_cases_per_mil'] = "0";
-            if(c==9):
+            if(c==10):
                 if((col.find(text=True))!=None):
                     data['deaths_per_mil'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
                     data['deaths_per_mil'] = "0";
-            if(c==10):
+            if(c==11):
                 if((col.find(text=True))!=None):
                     data['total_tests'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
                     data['total_tests'] = "0";
-            if(c==11):
+            if(c==12):
                 if((col.find(text=True))!=None):
                     data['test_per_mil'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
