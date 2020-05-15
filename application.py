@@ -264,7 +264,7 @@ def stats_yesterday():
                 elif(col.find('span') != None):
                     data['country'] = col.find('span').text.strip(' ')
                 else:
-                    data['country'] = col.find(text=True).strip(' ')
+                    data['country'] = col.find(text=True)
             if(c==1):
                 if((col.find(text=True))!=None):
                     data['total_cases'] = (col.find(text=True).strip(' ')).replace(',', '')
