@@ -170,38 +170,39 @@ def countries_stats():
                 if((col.find(text=True))!=None):
                     data['new_deaths'] = (col.find(text=True).strip(' '))
                 else:
-                    data['new_deaths'] = "0";
+                    data['new_deaths'] = "0"
             if(c==6):
                 if((col.find(text=True))!=None):
                     data['total_recovered'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
                     data['total_recovered'] = "0";
-            if(c==7):
+            if(c==8):
                 if((col.find(text=True))!=None):
                     data['active_cases'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
                     data['active_cases'] = "0";
-            if(c==8):
+            if(c==9):
+                print(col)
                 if((col.find(text=True))!=None):
                     data['serious_cases'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
                     data['serious_cases'] = "0";
-            if(c==9):
+            if(c==10):
                 if((col.find(text=True))!=None):
                     data['total_cases_per_mil'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
                     data['total_cases_per_mil'] = "0";
-            if(c==10):
+            if(c==11):
                 if((col.find(text=True))!=None):
                     data['deaths_per_mil'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
                     data['deaths_per_mil'] = "0";
-            if(c==11):
+            if(c==12):
                 if((col.find(text=True))!=None):
                     data['total_tests'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
                     data['total_tests'] = "0";
-            if(c==12):
+            if(c==13):
                 if((col.find(text=True))!=None):
                     data['tests_per_mil'] = (col.find(text=True).strip(' ')).replace(',', '')
                 else:
