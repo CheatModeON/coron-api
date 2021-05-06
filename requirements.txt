@@ -1,5 +1,5 @@
 bs4==0.0.1
 Flask==1.1.1
 requests==2.20.0
-flask-cors==3.0.8
+flask-cors==3.0.9
 gunicorn==19.9.0
